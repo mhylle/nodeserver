@@ -5,6 +5,7 @@ var bodyParser = require('body-parser');
 
 var eventController = require('./src/controllers/event');
 var userController = require('./src/controllers/user');
+var clientController = require('./src/controllers/client');
 
 var passport = require('passport');
 var authController = require('./src/controllers/auth');
@@ -38,6 +39,9 @@ router.route('/users')
     .post(userController.postUsers)
     .get(authController.isAuthenticated, userController.getUsers);
 
+router.route('/clients')
+    .post(authController.isAuthenticated, clientController.postClients)
+    .get(authController.isAuthenticated, clientController.getClients);
 // Register all our routes with /api
 app.use('/api', router);
 
