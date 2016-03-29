@@ -13,14 +13,14 @@ exports.postClients = function (req, res) {
             return res.send(err);
         }
         res.json({message: 'Client added', data: client});
-    })
+    });
 };
 
 exports.getClients = function(req,res) {
-    Client.finc({userId: req.user._id}, function(err, clients) {
+    Client.find({userId: req.user._id}, function(err, clients) {
         if (err) {
             return res.send(err);
         }
         res.json(clients);
-    })
+    });
 };
